@@ -50,7 +50,7 @@ else
     #p "Here is my integer #{myInteger}"
     end
 
-
+#METHOD. Will run everytime?
     def can_i_drink(my_age)
         if my_age >=19
 #            print "Yes, #{my_age}, can have a drink!"
@@ -59,8 +59,18 @@ else
         end
     end
 
-    my_age = 20
-    can_i_drink(my_age)
+# #??    
+# if my_age = 10.0
+#     print "You can drink!"
+# elseif my_age == 18
+# print "You can drink in Alberta!"
+# else
+#     print "Sorry pal, you're tpp young!!!"
+#     age = 100
+# end
+
+# my_age = 10.0
+#    can_i_drink(my_age)
 
     #Complete Data Types
     #Array - typically like values
@@ -83,5 +93,24 @@ else
         time_ago:3,
         username: "sharky_j"
     }
-    p fpost[:title]
-    p fpost[:username]
+#    p fpost[:title]
+#    p fpost[:username]
+
+def add_two_number(number1,number2)
+    #logic goes here
+end
+
+#W3D1 Blocks
+
+(1..5).each do |numbers|
+    p "hello world:)))"
+end
+
+# 5.times do
+#     p "hello world:)"
+# end
+
+5.times do
+    p "hello world :)"
+    p age == age + (1)
+end
