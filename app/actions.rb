@@ -53,10 +53,34 @@ get '/logout' do
   redirect to('/')
 end
 
-get '/finstagram_posts/new' do
-  erb(:"finstagram_posts/new")
+get '/finstagram_posts/:id' do
+  @finstagram_post = FinstagramPost.find(params[:id])   # find the finstagram post with the ID from the URL
+  erb(:"finstagram_posts/show")               # render app/views/finstagram_posts/show.erb
 end
 
 post '/finstagram_posts' do
-  params.to_s
+  photo_url = params[:photo_url]
+
+  @finstagram_post = FinstagramPost.new({ photo_url: photo_url, user_id: current_user.id })
+
+  if @finstagram_post.save
+    redirect(to('/'))
+  else
+    erb(:"finstagram_posts/new")
+  end
+end
+
+post '/comments' do
+  # point values from params to variables
+  text = params[:text]
+  finstagram_post_id = params[:finstagram_post_id]
+
+  # instantiate a comment with those values & assign the comment to the `current_user`
+  comment = Comment.new({ text: text, finstagram_post_id: finstagram_post_id, user_id: current_user.id })
+
+  # save the comment
+  comment.save
+
+  # `redirect` back to wherever we came from
+  redirect(back)
 end
